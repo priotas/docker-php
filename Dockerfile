@@ -1,6 +1,6 @@
 FROM php:7.1-apache
 
-RUN requirements="zlib1g-dev libicu-dev git curl libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev postgresql-client" \
+RUN requirements="zlib1g-dev libicu-dev git curl libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev postgresql-client " \
     && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
