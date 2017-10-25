@@ -14,7 +14,6 @@ RUN requirements="zlib1g-dev libicu-dev git curl libmcrypt-dev libxml2-dev libjp
 
 RUN a2enmod rewrite
 
-ADD config/vhost.conf /etc/apache2/sites-available/000-default.conf
 ADD config/php.ini /usr/local/etc/php/php.ini
 
 # Install composer
@@ -22,7 +21,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/bin/composer
 
 # Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
   apt-get install -y nodejs
 
 RUN mkdir /app
