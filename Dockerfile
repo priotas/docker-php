@@ -1,6 +1,10 @@
 FROM php:7.1-apache
 
-RUN requirements="zlib1g-dev libicu-dev git curl libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev postgresql-client" \
+RUN apt-get install curl -y
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+RUN requirements="zlib1g-dev libicu-dev git libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev postgresql-client yarn" \
     && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
