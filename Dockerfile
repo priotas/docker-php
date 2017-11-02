@@ -11,7 +11,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN requirements="zlib1g-dev libicu-dev git libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev postgresql-client yarn" \
-    && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
+    && apt-get update && apt-get install -y $requirements \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
     && docker-php-ext-install intl \
