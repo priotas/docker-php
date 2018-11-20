@@ -1,6 +1,6 @@
 FROM php:7.1-apache
 
-RUN apt-get install curl -y
+RUN apt-get update && apt-get install curl gnupg -y
 
 # Install Node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
@@ -10,7 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN requirements="zlib1g-dev libicu-dev git libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev yarn gnupg" \
+RUN requirements="zlib1g-dev libicu-dev git libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev yarn" \
     && apt-get update && apt-get install -y $requirements \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
