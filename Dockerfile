@@ -10,7 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN requirements="zlib1g-dev libicu-dev git libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev postgresql-client yarn" \
+RUN requirements="zlib1g-dev libicu-dev git libpq-dev libmcrypt-dev libxml2-dev libjpeg-dev libpng-dev yarn gnupg" \
     && apt-get update && apt-get install -y $requirements \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install pgsql \
