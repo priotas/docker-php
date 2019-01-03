@@ -1,6 +1,6 @@
 FROM php:7.1-apache
 
-RUN apt-get update && apt-get install curl gnupg -y
+RUN apt-get update && apt-get install curl gnupg wget -y
 
 # Install Node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
